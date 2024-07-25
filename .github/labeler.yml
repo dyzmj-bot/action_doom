@@ -1,18 +1,21 @@
-# labels to be used with /area command
-area:
-  - 'bug'
-  - 'important'
+name: Labeler
 
-kind:
-  - 'failing-test'
-  - 'cleanup'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
-priority:
-  - 'low'
-  - 'high'
-
-tests:
-  - '**/*.test.ts'
-
-source:
-  - 'src/**'
+jobs:
+  labeling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run labeler
+        uses: doka-guide/doka-labeler@v1
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          config: ".github/labeler-config.yml"

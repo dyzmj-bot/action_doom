@@ -1,0 +1,28 @@
+# set "article" label when front matter has "article"
+"article":
+  - meta:
+      tags: "article"
+
+# set "daily log" label from front matter:
+"daily log":
+  - meta:
+      tags: "daily-log"
+
+
+# "design review" if images are added or modified:
+"design review":
+  - files:
+      added: *.(jpg|jpeg|svg|png)
+      modified: *.(jpg|jpeg|svg|png)
+
+# alarm when critical files are removed
+"🚨 alarm":
+  - strategy:
+      - create-if-missing # create this label if it does not exist
+  - files:
+      modified:
+        - package-lock.json
+      removed:
+        - package-lock.json
+        - package.json
+        - .github/**
