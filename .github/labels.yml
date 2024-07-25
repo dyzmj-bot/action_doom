@@ -1,0 +1,18 @@
+# labels to be used with /area command
+area:
+  - 'bug'
+  - 'important'
+
+kind:
+  - 'failing-test'
+  - 'cleanup'
+
+priority:
+  - 'low'
+  - 'high'
+
+tests:
+  - '**/*.test.ts'
+
+source:
+  - 'src/**'
